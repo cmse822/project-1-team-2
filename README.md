@@ -79,5 +79,14 @@ s += A[i] * A[i]              | 2     | 1/4
 s += A[i] * B[i]              | 1     | 1/8
 Y[i] = A[i] + C*B[i]          | 2/3   | 1/12
 
+## Part 1: Matrix-matrix Multiplication
 
+### Operator Analysis
+In the matrix multiplication $AB = C$, we have that a single column of $C$ is given by
+
+$$c_i = \sum_{k=1}^N a_{ik}b_{ki}.$$
+
+[To do]: Calculate kernel computational intensity
+
+## Part 2: The Roofline Model
 
