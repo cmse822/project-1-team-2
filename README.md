@@ -68,7 +68,7 @@ To your project write-up, add your plots of the roofline model for the systems y
 
 # Report
 
-Team Members: Esteban Echeverri, John Salako, Jorge Martinez-Ortiz.
+Team Members: Esteban Echeverri, John Salako, Farhad Abdollahi, Jorge Martinez-Ortiz.
 
 ## Warm-up Answers
 
@@ -87,6 +87,21 @@ In the matrix multiplication $AB = C$, we have that a single column of $C$ is gi
 $$c_i = \sum_{k=1}^N a_{ik}b_{ki}.$$
 
 [To do]: Calculate kernel computational intensity
+
+### Architectures 
+
+ Team Member | Architecture | Local | HPCC
+--|--|--|--
+Esteban   | 
+John      |
+Farhad    | 
+Jorge     |
+
+[To do]: Figure out local architecture clockspeed, cache etc. Also HPCC architecture. 
+
+
+
+
 
 ## Part 2: The Roofline Model
 
