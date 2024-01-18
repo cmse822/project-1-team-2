@@ -27,15 +27,15 @@ The total number of operations requires is $N^3-N^2=O(N^3)$.
 
 ### Architectures 
 
- Architecture | Clock speed | Cache Size | Cache Layout
---|--|--|--
-Esteban local     | 
-amd20             |
-John local        |
-dev_hpcc          |
-Farhad local      | 
-intel16           |
-Jorge local       |
-intel18           |
+ Architecture | Clock speed | Cache Size | Cache Layout | Cores
+--|--|--|--|--|
+Esteban local     | |||
+amd20             | |||
+John local        | |||
+dev_hpcc          | |||
+Farhad local      | |||
+intel16           | ||| 
+Jorge local       | |||
+intel18           | |||
 
 ## Part 2: The Roofline Model
