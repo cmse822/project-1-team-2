@@ -39,21 +39,27 @@ void init_mat(int size, vector<vector<double>> mat) {
 }
 
 int main(int argc, char* argv[]){
-    int lower = 500;
+    int lower = 1000;
     int upper = 10000;
-    int step = 500;
+    int step = 1000;
     int batch_size = 100;
     int size = 0;
     double sum = 0;
     double sum_transpose = 0;
+    double mean = 0;
+    double mean_transpose = 0;
+    double std = 0;
+    double std_transpose = 0;
 
     ofstream myfile;
     myfile.open ("results.csv");
-    myfile << "matrix size,matrix multiplication time,matrix multiplication time using a transpose matrix\n";
+    myfile << "matrix size,M.M. average time,M.M.T. average time,M.M. std,M.M.T. std\n";
     for (int i = lower; i <= upper; i += step){
         size = i;
         sum = 0;
         sum_transpose = 0;
+        vector<double> times(batch_size);        
+        vector<double> times_transpose(batch_size);
         for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
             vector<vector<double>> A(size, vector<double>(size));
             vector<vector<double>> B(size, vector<double>(size));
@@ -75,8 +81,21 @@ int main(int argc, char* argv[]){
             //cout << "time to finish: " << time.count() << " seconds" << endl; 
             sum += time.count();
             sum_transpose += time_transpose.count();
+            times[batch_iter] = time.count();
+            times_transpose[batch_iter] = time_transpose.count();
         }
-        myfile << i << "," << sum/batch_size << "," << sum_transpose/batch_size <<"\n";
+        mean = sum/batch_size;
+        mean_transpose = sum_transpose/batch_size;
+        sum = 0;
+        sum_transpose = 0;
+        for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
+            sum += pow(times[batch_iter] - mean,2);
+            sum_transpose += pow(times_transpose[batch_iter] - mean_transpose,2);
+        }
+        std = sqrt(sum/batch_size);
+        std_transpose = sqrt(sum_transpose/batch_size);
+
+        myfile << i << "," << mean << "," << mean_transpose << "," << std << "," << std_transpose << "\n";
         cout << i << endl;
     }
     cout << "done" << endl; 
