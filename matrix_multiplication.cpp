@@ -38,12 +38,7 @@ void init_mat(int size, vector<vector<double>> mat) {
     }
 }
 
-int main(int argc, char* argv[]){
-    int lower = 1000;
-    int upper = 10000;
-    int step = 1000;
-    int batch_size = 20;
-    int size = 0;
+void batch_experiment(int mat_size,int batch_size,ofstream& myfile){
     double sum = 0;
     double sum_transpose = 0;
     double mean = 0;
@@ -51,52 +46,63 @@ int main(int argc, char* argv[]){
     double std = 0;
     double std_transpose = 0;
 
+    vector<double> times(batch_size);        
+    vector<double> times_transpose(batch_size);
+    for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
+        vector<vector<double>> A(mat_size, vector<double>(mat_size));
+        vector<vector<double>> B(mat_size, vector<double>(mat_size));
+        vector<vector<double>> C(mat_size, vector<double>(mat_size));
+        init_mat(mat_size,A);
+        init_mat(mat_size,B);
+
+        auto start = chrono::system_clock::now();
+        mat_mul(mat_size,A,B,C);
+        auto end = chrono::system_clock::now();
+        chrono::duration<double> time = (end - start);
+
+        auto start_transpose = chrono::system_clock::now();
+        mat_mul_transpose(mat_size,A,B,C);
+        auto end_transpose = chrono::system_clock::now();
+        chrono::duration<double> time_transpose = (end_transpose - start_transpose);
+
+        //myfile << i << "," << time.count() << "," << time_transpose.count() <<"\n";
+        //cout << "time to finish: " << time.count() << " seconds" << endl; 
+        sum += time.count();
+        sum_transpose += time_transpose.count();
+        times[batch_iter] = time.count();
+        times_transpose[batch_iter] = time_transpose.count();
+    }
+    mean = sum/batch_size;
+    mean_transpose = sum_transpose/batch_size;
+    sum = 0;
+    sum_transpose = 0;
+    for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
+        sum += pow(times[batch_iter] - mean,2);
+        sum_transpose += pow(times_transpose[batch_iter] - mean_transpose,2);
+    }
+    std = sqrt(sum/batch_size);
+    std_transpose = sqrt(sum_transpose/batch_size);
+
+    myfile << mat_size << "," << mean << "," << mean_transpose << "," << std << "," << std_transpose << "\n";
+    cout << mat_size << endl;
+}
+
+int main(int argc, char* argv[]){
+    int lower = 1000;
+    int upper = 10000;
+    int step = 1000;
+    int batch_size = 20;
+    int size = 0;
+
     ofstream myfile;
     myfile.open ("results.csv");
     myfile << "matrix size,M.M. average time,M.M.T. average time,M.M. std,M.M.T. std\n";
+    // run a matrix multiplication experiment with size 100 with 'batch_size' number of iterations 
+    batch_experiment(100,batch_size,myfile);
     for (int i = lower; i <= upper; i += step){
         size = i;
-        sum = 0;
-        sum_transpose = 0;
-        vector<double> times(batch_size);        
-        vector<double> times_transpose(batch_size);
-        for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
-            vector<vector<double>> A(size, vector<double>(size));
-            vector<vector<double>> B(size, vector<double>(size));
-            vector<vector<double>> C(size, vector<double>(size));
-            init_mat(size,A);
-            init_mat(size,B);
-
-            auto start = chrono::system_clock::now();
-            mat_mul(size,A,B,C);
-            auto end = chrono::system_clock::now();
-            chrono::duration<double> time = (end - start);
-
-            auto start_transpose = chrono::system_clock::now();
-            mat_mul_transpose(size,A,B,C);
-            auto end_transpose = chrono::system_clock::now();
-            chrono::duration<double> time_transpose = (end_transpose - start_transpose);
-
-            //myfile << i << "," << time.count() << "," << time_transpose.count() <<"\n";
-            //cout << "time to finish: " << time.count() << " seconds" << endl; 
-            sum += time.count();
-            sum_transpose += time_transpose.count();
-            times[batch_iter] = time.count();
-            times_transpose[batch_iter] = time_transpose.count();
-        }
-        mean = sum/batch_size;
-        mean_transpose = sum_transpose/batch_size;
-        sum = 0;
-        sum_transpose = 0;
-        for (int batch_iter = 0; batch_iter < batch_size; batch_iter++){
-            sum += pow(times[batch_iter] - mean,2);
-            sum_transpose += pow(times_transpose[batch_iter] - mean_transpose,2);
-        }
-        std = sqrt(sum/batch_size);
-        std_transpose = sqrt(sum_transpose/batch_size);
-
-        myfile << i << "," << mean << "," << mean_transpose << "," << std << "," << std_transpose << "\n";
-        cout << i << endl;
+        // run a matrix multiplication experiment with size 'i' with 'batch_size' number of iterations 
+        batch_experiment(i,batch_size,myfile);
     }
     cout << "done" << endl; 
     myfile.close();
