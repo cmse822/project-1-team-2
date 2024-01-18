@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=00:06:00
-#SBATCH --mem=1gb
+#SBATCH --time=04:00:00
+#SBATCH --mem=3gb
 
 # output information about how this job is running using bash commands
 echo "This job is running on $HOSTNAME on `date`"
