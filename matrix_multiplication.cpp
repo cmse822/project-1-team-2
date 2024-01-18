@@ -39,11 +39,11 @@ void init_mat(int size, vector<vector<double>> mat) {
 }
 
 int main(int argc, char* argv[]){
-    int lower = 100;
+    int lower = 500;
     int upper = 10000;
+    int step = 500;
     int batch_size = 100;
     int size = 0;
-    int step = 100;
     double sum = 0;
     double sum_transpose = 0;
 
