@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
     int lower = 1000;
     int upper = 10000;
     int step = 1000;
-    int batch_size = 100;
+    int batch_size = 20;
     int size = 0;
     double sum = 0;
     double sum_transpose = 0;
