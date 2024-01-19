@@ -86,21 +86,28 @@ void batch_experiment(int mat_size,int batch_size,ofstream& myfile){
 }
 
 int main(int argc, char* argv[]){
-    int lower = 1000;
-    int upper = 10000;
-    int step = 1000;
-    int batch_size = 10;
-    int size = 0;
+    int num_steps = 10;
+    double power_low = 2;
+    double power_high = 4;
+    double power_step = (power_high - power_low) / num_steps;
+    int batch_size = 7;
 
+    // Open file
     ofstream myfile;
     myfile.open ("results.csv");
-    myfile << "matrix size,M.M. average time,M.M.T. average time,M.M. std,M.M.T. std\n";
-    // run a matrix multiplication experiment with size 100 with 'batch_size' number of iterations 
-    batch_experiment(100,batch_size,myfile);
-    for (int i = lower; i <= upper; i += step){
-        size = i;
-        // run a matrix multiplication experiment with size 'i' with 'batch_size' number of iterations 
-        batch_experiment(i,batch_size,myfile);
+    myfile << "matrix size, average time, standard deviation" << endl;
+    
+    // Run experiment with different matrix sizes
+    for (int i = 0 ; i <= num_steps; i++){
+        // Calculate matrix power
+        double power = power_low + (i * power_step);
+
+        // Calculate matrix size 
+        int size = static_cast<int>(pow(10,power));
+
+        // Perform experiment
+        cout << "Performing experiment for p=" << power << " (N=" << size << ")" << endl;
+        batch_experiment(size,batch_size,myfile);
     }
     cout << "done" << endl; 
     myfile.close();
