@@ -87,8 +87,8 @@ void batch_experiment(int mat_size,int batch_size,ofstream& myfile){
 
 int main(int argc, char* argv[]){
     int num_steps = 10;
-    double power_low = 2;
-    double power_high = 4;
+    double power_low = 1;
+    double power_high = 3;
     double power_step = (power_high - power_low) / num_steps;
     int batch_size = 7;
 
