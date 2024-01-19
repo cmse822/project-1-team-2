@@ -12,19 +12,32 @@ using namespace std;
 void mat_mul(int size,vector<vector<double>> mat1, vector<vector<double>> mat2, vector<vector<double>> result){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
-            result[i][j] = mat1[i][j] * mat2[j][i];
+            for(int k = 0; k < size; k++){
+                result[i][j] += mat1[i][k] * mat2[k][j];
+            }
         }
     }
 }
 
 void init_mat(int size, vector<vector<double>> mat) {
-    // Random number generator, to initialize the Matrix with numbers between [-1, 1]
-    random_device rd;                           // Obtain a random number from hardware
+    // Uniform distribution [-1,1]
+    random_device rd;                           // Hardware random number
     mt19937 eng(rd());                          // Seed the generator
     uniform_real_distribution<> distr(-1, 1);   // Define the range
+
+    // Populate matrix
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             mat[i][j] = distr(eng);
+        }
+    }
+}
+
+void init_mat_zeros(int size, vector<vector<double>> mat){
+    // Populate matrix
+    for (int i =0; i < size; i++){
+        for (int j = 0; j < size; j++){
+            mat[i][j] = 0;
         }
     }
 }
@@ -44,6 +57,7 @@ void batch_experiment(int mat_size,int batch_size,ofstream& myfile){
         // Initialize matrices
         init_mat(mat_size,A);
         init_mat(mat_size,B);
+        init_mat_zeros(mat_size,C);
 
         // Execute and time matrix multiplication
         auto start = chrono::system_clock::now();
