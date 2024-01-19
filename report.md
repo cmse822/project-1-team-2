@@ -33,8 +33,8 @@ Esteban local           | |||
 amd20                   | |||
 John local              | |||
 intel18                 | |||
-Farhad local            |X |X | 2.6  | 64, 256, 12MB | X | 6  | 249.6
-intel16                 |X |X | 3.001| 32, 256, 35MB | X | 14 | 336.11
+Farhad local            |X |X | 2.6  | 64, 256, 12MB | 6, 6, 1 | 6  | 249.6
+intel16                 |X |X | 3.001| 32, 256, 35MB | 14, 14, 1 | 14 | 336.11
 Jorge Apple Silicon M2  |0.0323759 |||
 amd20-v100              | |||
 
