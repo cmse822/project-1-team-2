@@ -91,7 +91,7 @@ int main(int argc, char* argv[]){
     int lower = 1000;
     int upper = 10000;
     int step = 1000;
-    int batch_size = 20;
+    int batch_size = 10;
     int size = 0;
 
     ofstream myfile;
