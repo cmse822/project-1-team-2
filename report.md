@@ -28,14 +28,14 @@ The total number of operations requires is $N^3-N^2=O(N^3)$.
 ### Architectures 
  Architecture | Time (s) $N=1000$|Mflops/s $N=1000$ | Clock speed (GHz) | Cache Size | Cache Layout | Cores | Theoretical Peak Performance (GFlops/s)|
 --|--|--|--|--|--|--|--|
-Esteban local           |10.191 |196.25159 | 2.3 GHz  | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3 | 10  | 184
-amd20                   |25.2734 |79.13458 | 2.6 GHz  | 32 KB, 32 KB, 512 KB, 16384 KB| 64 L1d, 64 L1i, 64 L2, 1 L3 | 64  | 1331.2
-John local              |19.8227 ||2.6 GHz|384K, 1500K, 12000K|6, 6, 1 |6 | 124.8
-intel18                 |17.8211 ||2.4 GHz| 32K, 32K, 1024K, 28160K |20 L1d, 20 L1i, 20 L2, 1 L3 |20 |384
-Farhad local            |X |X | 2.6  | 64, 256, 12MB | 6, 6, 1 | 6  | 249.6
-intel16                 |X |X | 3.001| 32, 256, 35MB | 14, 14, 1 | 14 | 336.11
-Jorge Apple Silicon M2  |0.0323759 || 3.2 GHz| 192KB, 12MB | L1, L2| 8 | 
-amd20-v100              | |||
+Esteban local           | 10.191     | 196.251  | 2.3       | 480 KB, 320 KB, 12.5 MB, 24 MB    | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 184
+amd20                   | 25.2734    | 79.13458 | 2.6       | 32 KB, 32 KB, 512 KB, 16384 KB    | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 1331.2
+John local              | 19.8227    |          | 2.6       | 384K, 1500K, 12000K               |6, 6, 1 |6 | 124.8
+intel18                 | 17.8211    |          | 2.4       | 32K, 32K, 1024K, 28160K           |20 L1d, 20 L1i, 20 L2, 1 L3 |20 |384
+Farhad local            | X          | X        | 2.6       | 64, 256, 12MB                     | 6, 6, 1 | 6  | 249.6
+intel16                 | X          | X        | 3.001     | 32, 256, 35MB                     | 14, 14, 1 | 14 | 336.11
+Jorge Apple Silicon M2  | 10.9542    | 91.30    | 3.2 GHz   | 192KB, 12MB, 8MB                  | L1, L2, L3| 8 | 
+Jorge amd20-v100        | 15.59      | 64.13    | 2.6 GHz   | 32 KB, 32 KB, 512 KB, 16384 KB    | 64 L1d, 64 L1i, 64 L2, 1 L3 | 64  | 1331.2
 
 ![img1](/analysis/sample.png)
 
