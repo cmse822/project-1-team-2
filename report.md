@@ -29,8 +29,8 @@ The total number of operations requires is $N^3-N^2=O(N^3)$.
 
  Architecture | Time (s) $N=1000$|Mflops/s $N=1000$ | Clock speed (GHz) | Cache Size (Kb)| Cache Layout | Cores | Theoretical Peak Performance (GFlops/s)|
 --|--|--|--|--|--|--|--|
-Esteban local           | |||
-amd20                   | |||
+Esteban local           |10.191 sec |196.25159 | 2.3 GHz  | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3 | 10  | 184
+amd20                   |25.2734 sec |79.13458 | 2.6 GHz  | 32 KB, 32 KB, 512 KB, 16384 KB| 64 L1d, 64 L1i, 64 L2, 1 L3 | 64  | 1331.2
 John local              | |||
 intel18                 | |||
 Farhad local            |X |X | 2.6  | 64, 256, 12MB | 6, 6, 1 | 6  | 249.6
