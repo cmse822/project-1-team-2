@@ -48,7 +48,7 @@ John     | intel18      | 15.282 | 64.782
 Jorge    | local        | 10.108 | 97.942
 Jorge    | amd20-v100   | 16.159 | 61.266
 Farhad   | local        | 11.389 | 86.826
-Farhad   | intel16      | 14.476 | 63.389
+Farhad   | intel16      | 14.476 | 68.389
 
 ### Question 4:
 
@@ -66,12 +66,27 @@ John    | intel18 | 2.4 | 32K, 32KB, 1MB, 28.160MB |20 L1d, 20 L1i, 20 L2, 1 L3 
 Jorge   | local (Apple Silicon M2) | 3.2 | 192KB, 12MB, 8MB | 8 L1, 8 L2, 1 L3| 8 | 25.6 | X | 10.108 | 97.942
 Jorge   | amd20-v100 | 2.6 | 32 KB, 32 KB, 512 KB, 16.384MB | 64 L1d, 64 L1i, 64 L2, 1 L3 | 64 | 166.4 | X | 16.159 | 61.266
 Farhad  | local | 2.6 | 64KB, 256KB, 12MB | 6 L1, 6 L2, 1 L3 | 6 | 15.6 | 249.6 | 11.389 | 86.826
-Farhad  | intel16 | 2.4 | 32KB, 256KB, 35MB | 14 L1, 14 L2, 1 L3 | 14 | 33.6 | 336.11| 14.476 | 63.389
+Farhad  | intel16 | 2.4 | 32KB, 256KB, 35MB | 14 L1, 14 L2, 1 L3 | 14 | 33.6 | 336.11| 14.476 | 68.389
 
-Finally, the Mflop/s of the matrix multiplication of size `N=100` is plotted against the Theoretical Peak Performance (Gflops/s) of the available CPUs at different machines as follows. As this figure shows, XXXX
+Finally, the Mflop/s of the matrix multiplication of size `N=100` is plotted against the Theoretical Peak Performance (Gflops/s) of the available CPUs for local and HPCC machine types. As this figure shows for the local machines, the rate of floating point operations (Mflops/s) is generally increased with an increase in the CPU computational capacity (TPP). However, for the HPCC machines, this trend is unexpectedly reversed; where the rate of the floating point operations decreases with an increase in TPP, especially for the more recent `amd20` machine which has 64 cores. `DO WE HAVE ANY OTHER REASON FOR THIS? MAYBE THE CALCULATION IS BANDWIDTH-BOUNDED? OR MAYBE HIGHER NUMBER OF CORES ARE MISLEADING AND NOT USED IN CALCULATIONS, BECAUSE WE RAN IN DEVELOPMENT NODES AND CORES ARE SHARED?.`
+
+![img1](/analysis/Part1_Q4_Mflops_vs_TPP.png)
 
 
+### Question 5:
 
-![img1](/analysis/sample.png)
+The following figure shows the results for different matrix sizes from `N=1` to `N=1000`; where the horizontal axis shows the number of floating point operations ($N^3-N^2$) and vertical axis represents the average rate of the floating point operations. As this figure shows for both locan and HPCC runs, the rate of the floating point operation increases with an increase in the matrix size and reaches to a peak value. This peak value represents the ridge-point at which the bandwidth-bound and computing-bounds conflicted together. After this point, the matrix size is too large for the Cash replacements and therefore the rate of floating point operations reduces, due to the unavailability of the data in high-level memory cashes.
+
+#### Discussion based on system architecture:
+
+For instance in the local runs, the highest performance is for Esteban's systems which have the highest L1 cash capacity and common clock speed of 2.3 GHz. On the other hand, the lowest performance is for Farhad's system which has the lowest L1 cash capacity and clock speed of 2.4 GHz. Another interesting observation was that although John's system has slightly higher L1 cash capacity than that of Jorge, it's performance was a little lower. This can attribute to the considerably higher clock speed of the Jorge's system (3.2 GHz) which was about 20% higher.  
+
+![img2](/analysis/Part1_Q5_Mflops-s_vs_Mflops.png)
+
+In order to cinfirm the above-mentioned discussion, the matrix size is increased upto `N=10,000` only in one machine (`Farhad_local`), where the results shown as follows. As this figure shows, the rate of the operations (`Mflops/s`) is significantly reduces for the higher matrix sizes and the peak performance point is clearly visible. 
+
+### Question 6:
+
+According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
 
 ## Part 2: The Roofline Model
