@@ -4,6 +4,8 @@ Team Members: Esteban Echeverri, John Salako, Farhad Abdollahi, Jorge Martinez-O
 
 ## Warm-up Answers
 
+The "Arithmetic Intensity" of four operations in Warm-up question are shown as follows:
+
 Kernel | Arithmetic Intensity | FLOPs/byte
 --|--|--
 Y[j] += Y[j] + A[j][i] * B[i] | 3/4   | 3/32 
@@ -11,31 +13,64 @@ s += A[i] * A[i]              | 2     | 1/4
 s += A[i] * B[i]              | 1     | 1/8
 Y[i] = A[i] + C*B[i]          | 2/3   | 1/12
 
+___
 ## Part 1: Matrix-matrix Multiplication
 
-### Operator Analysis
 In the matrix multiplication $AB = C$, we have that a single column of $C$ is given by
 
 $$c_i = \sum_{k=1}^N a_{ik}b_{ki}.$$
 
-The following operations are required:
+
+### Question 1:
+
+The "matrix-matrix multiplication" code has been developed in `C++` programming language under the `matrix_multiplication.cpp`. The operation is developed as a triple-nested loop over to calculate the results under the `matmul(A, B, C)` function. In this code, 10 different matrix sizes from `N=10` to `N=1000` has been evaluated (square matrices), where the elements of each matrix were randomly generated as a `double` type between -1 and 1. The runtime of operation has been evaluated by the mean and standard deviation of 7 different runs. 
+
+### Question 2: 
+
+Considering the square matrix assumption and the multiplication formula presented above, for a given matrix size `N`, the following floating point operations are required: 
+
 - Vector product: $N$ multiplications and $N-1$ additions.
 - Each column of $C$ has $N$ entries.
 - $C$ has $N$ columns.
 
-The total number of operations requires is $N^3-N^2=O(N^3)$.
+Therefore, the total number of operations requires is $N^3-N^2=O(N^3)$.
 
-### Architectures 
- Architecture | Time (s) $N=1000$|Mflops/s $N=1000$ | Clock speed (GHz) | Cache Size | Cache Layout | Cores | Theoretical Peak Performance (GFlops/s)|
---|--|--|--|--|--|--|--|
-Esteban local           | 10.191     | 196.251  | 2.3       | 480 KB, 320 KB, 12.5 MB, 24 MB    | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 184
-amd20                   | 25.2734    | 79.13458 | 2.6       | 32 KB, 32 KB, 512 KB, 16384 KB    | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 1331.2
-John local              | 19.8227    |          | 2.6       | 384K, 1500K, 12000K               |6, 6, 1 |6 | 124.8
-intel18                 | 17.8211    |          | 2.4       | 32K, 32K, 1024K, 28160K           |20 L1d, 20 L1i, 20 L2, 1 L3 |20 |384
-Farhad local            | X          | X        | 2.6       | 64, 256, 12MB                     | 6, 6, 1 | 6  | 249.6
-intel16                 | X          | X        | 3.001     | 32, 256, 35MB                     | 14, 14, 1 | 14 | 336.11
-Jorge Apple Silicon M2  | 10.9542    | 91.30    | 3.2 GHz   | 192KB, 12MB, 8MB                  | L1, L2, L3| 8 | 
-Jorge amd20-v100        | 15.59      | 64.13    | 2.6 GHz   | 32 KB, 32 KB, 512 KB, 16384 KB    | 64 L1d, 64 L1i, 64 L2, 1 L3 | 64  | 1331.2
+### Question 3: 
+
+In our code, the runtime of the operation is measured through the `chrono::system_clock::now()` by measuring the system clock time before and after the operation. The total number of floating point operations are also estimated using the $N^3-N^2$ (based on Question 2), which is 0.99 Mflop. The following table shows the results for matrix size of `N=100`.
+
+User | Architecture | Avg Runtime (ms) | Mflops/s
+--|--|--|--|
+Esteban  | local        | 7.747  | 127.791
+Esteban  | amd20        | 16.469 | 60.113
+John     | local        | 13.895 | 71.248
+John     | intel18      | 15.282 | 64.782
+Jorge    | local        | 10.108 | 97.942
+Jorge    | amd20-v100   | 16.159 | 61.266
+Farhad   | local        | 11.389 | 86.826
+Farhad   | intel16      | 14.476 | 63.389
+
+### Question 4:
+
+
+As mentioned earlier, each groupmember uses a local and HPCC machines for running the "matrix-matrix multiplication" code at 10 different matrix sizes; where the architecture of the machines are described in the following table.
+
+`NOTE`: the problem statement asks to use the assumption of "1 flop per cycle" for calculation of the "Theoretical Peak Performance" (TPP), this is while it's not the case for almost every CPU architecture nowadays. According to online search, the assumption of 8 flops/cycle for x86 and 16 flops/cycle for x64 has also be used.
+
+User | Architecture | Clock speed (GHz) | Cache Size | Cache Layout | Cores | TPP (GFlops/s) - Assmp: 1 flop/cycle | TPP (Gflops/s) | Avg Runtime (ms) $N=100$| Mflops/s $N=100$ |
+--|--|--|--|--|--|--|--|--|--|
+Esteban | local | 2.3 | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 23.0 | 184 | 7.7.747 | 127.791  
+Esteban | amd20 | 2.6 | 32 KB, 32 KB, 512 KB, 16.38 MB | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 166.4 | 1331.2 | 16.469 | 60.113
+John    | local | 2.6 | 384KB, 1.5MB, 12MB |6 L1, 6 L2, 1 L3 | 6 | 15.6 | 124.8| 13.895 | 71.248 
+John    | intel18 | 2.4 | 32K, 32KB, 1MB, 28.160MB |20 L1d, 20 L1i, 20 L2, 1 L3 | 20 | 48.0 |384| 15.282 | 64.782          
+Jorge   | local (Apple Silicon M2) | 3.2 | 192KB, 12MB, 8MB | 8 L1, 8 L2, 1 L3| 8 | 25.6 | X | 10.108 | 97.942
+Jorge   | amd20-v100 | 2.6 | 32 KB, 32 KB, 512 KB, 16.384MB | 64 L1d, 64 L1i, 64 L2, 1 L3 | 64 | 166.4 | X | 16.159 | 61.266
+Farhad  | local | 2.6 | 64KB, 256KB, 12MB | 6 L1, 6 L2, 1 L3 | 6 | 15.6 | 249.6 | 11.389 | 86.826
+Farhad  | intel16 | 2.4 | 32KB, 256KB, 35MB | 14 L1, 14 L2, 1 L3 | 14 | 33.6 | 336.11| 14.476 | 63.389
+
+Finally, the Mflop/s of the matrix multiplication of size `N=100` is plotted against the Theoretical Peak Performance (Gflops/s) of the available CPUs at different machines as follows. As this figure shows, XXXX
+
+
 
 ![img1](/analysis/sample.png)
 
