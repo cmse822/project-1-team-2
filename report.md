@@ -83,8 +83,6 @@ For instance in the local runs, the highest performance is for Esteban's systems
 
 ![img2](/analysis/Part1_Q5_Mflops-s_vs_Mflops.png)
 
-In order to cinfirm the above-mentioned discussion, the matrix size is increased upto `N=10,000` only in one machine (`Farhad_local`), where the results shown as follows. As this figure shows, the rate of the operations (`Mflops/s`) is significantly reduces for the higher matrix sizes and the peak performance point is clearly visible. 
-
 ### Question 6:
 
 According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
