@@ -1,0 +1,64 @@
+{
+   "empirical": {
+      "metadata": {},
+      "gflops": {
+         "data": [
+            [
+               "FP64 GFLOPs",
+               24.11
+            ]
+         ],
+         "metadata": {
+            "": [
+               "META_DATA",
+               "FLOPS          4",
+               "ERT_VERSION  1.1.0",
+               "HOSTNAME  ('Esteban.localdomain', ['Esteban'], ['127.0.1.1'])",
+               "UNAME  uname_result(system='Linux', node='Esteban', release='5.10.16.3-microsoft-standard-WSL2', version='#1 SMP Fri Apr 2 22:23:49 UTC 2021', machine='x86_64')",
+               "TIMESTAMP_DATA  1705960277.5614657",
+               "CONFIG  {'ERT_RESULTS': ['Results.Esteban_Local.01'], 'ERT_DRIVER': ['driver1'], 'ERT_KERNEL': ['kernel1'], 'ERT_MPI': ['False'], 'ERT_MPI_CFLAGS': [], 'ERT_MPI_LDFLAGS': [], 'ERT_OPENMP': ['False'], 'ERT_OPENMP_CFLAGS': ['-openmp'], 'ERT_OPENMP_LDFLAGS': ['-openmp'], 'ERT_FLOPS': ['1,2,4,8,16,32'], 'ERT_ALIGN': ['64'], 'ERT_CC': ['g++'], 'ERT_CFLAGS': ['-O3'], 'ERT_LD': ['g++'], 'ERT_LDFLAGS': [], 'ERT_LDLIBS': [], 'ERT_PRECISION': ['FP64'], 'ERT_RUN': ['./ERT_CODE'], 'ERT_PROCS_THREADS': ['16'], 'ERT_MPI_PROCS': ['1,2,4,8,16'], 'ERT_OPENMP_THREADS': ['1,2,4,8,16'], 'ERT_NUM_EXPERIMENTS': ['3'], 'ERT_MEMORY_MAX': ['1073741824'], 'ERT_WORKING_SET_MIN': ['1'], 'ERT_TRIALS_MIN': ['1'], 'ERT_GNUPLOT': ['gnuplot'], 'ERT_GPU': [False], 'ERT_HIP': [False], 'ERT_OCL': [False], 'ERT_SYCL': [False], 'ERT_WSS_MULT': [1.1]}",
+               "TIMESTAMP_DATA  1705960305.8674886",
+               "TIMESTAMP_DATA  1705960334.8963768"
+            ],
+            "TIMESTAMP_DB": 1705961252.3721642
+         }
+      },
+      "gbytes": {
+         "data": [
+            [
+               "L1",
+               144.18
+            ],
+            [
+               "L2",
+               88.79
+            ],
+            [
+               "DRAM",
+               25.14
+            ]
+         ],
+         "metadata": {
+            "": [
+               "FLOPS          1",
+               "ERT_VERSION  1.1.0",
+               "HOSTNAME  ('Esteban.localdomain', ['Esteban'], ['127.0.1.1'])",
+               "UNAME  uname_result(system='Linux', node='Esteban', release='5.10.16.3-microsoft-standard-WSL2', version='#1 SMP Fri Apr 2 22:23:49 UTC 2021', machine='x86_64')",
+               "TIMESTAMP_DATA  1705959955.6430664",
+               "CONFIG  {'ERT_RESULTS': ['Results.Esteban_Local.01'], 'ERT_DRIVER': ['driver1'], 'ERT_KERNEL': ['kernel1'], 'ERT_MPI': ['False'], 'ERT_MPI_CFLAGS': [], 'ERT_MPI_LDFLAGS': [], 'ERT_OPENMP': ['False'], 'ERT_OPENMP_CFLAGS': ['-openmp'], 'ERT_OPENMP_LDFLAGS': ['-openmp'], 'ERT_FLOPS': ['1,2,4,8,16,32'], 'ERT_ALIGN': ['64'], 'ERT_CC': ['g++'], 'ERT_CFLAGS': ['-O3'], 'ERT_LD': ['g++'], 'ERT_LDFLAGS': [], 'ERT_LDLIBS': [], 'ERT_PRECISION': ['FP64'], 'ERT_RUN': ['./ERT_CODE'], 'ERT_PROCS_THREADS': ['16'], 'ERT_MPI_PROCS': ['1,2,4,8,16'], 'ERT_OPENMP_THREADS': ['1,2,4,8,16'], 'ERT_NUM_EXPERIMENTS': ['3'], 'ERT_MEMORY_MAX': ['1073741824'], 'ERT_WORKING_SET_MIN': ['1'], 'ERT_TRIALS_MIN': ['1'], 'ERT_GNUPLOT': ['gnuplot'], 'ERT_GPU': [False], 'ERT_HIP': [False], 'ERT_OCL': [False], 'ERT_SYCL': [False], 'ERT_WSS_MULT': [1.1]}",
+               "TIMESTAMP_DATA  1705959981.6707983",
+               "TIMESTAMP_DATA  1705960008.8931181"
+            ],
+            "TIMESTAMP_DB": 1705961252.3722851
+         }
+      }
+   },
+   "spec": {
+      "gflops": {
+         "data": []
+      },
+      "gbytes": {
+         "data": []
+      }
+   }
+}
