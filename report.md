@@ -88,3 +88,27 @@ For instance in the local runs, the highest performance is for Esteban's systems
 According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
 
 ## Part 2: The Roofline Model
+
+The CS Roofline Toolkit 1.1.0 has been cloned and run by each groupmember on the same computing systems used for Part 1. In what follows, the project questions are addressed:
+
+### Question 1-3:
+
+After cloning the Roofline Toolkit from GitHub, each groupmember modify the `config` file corresponds to the system used for running. The main modifications were disabling the OpenMM and MPI parts, changing the compiler to the gcc system compiler, removing the compiler options, and specify the output folders. 
+
+Based on the results, the peak performance and bandwidths for different cash levels can be summarized in the following table:
+
+User | Architecture | Peak Performance (Gflops/s) | L1 Cash (GB/s) | L2 Cash (GB/s) | DRAM (GB/s)
+--|--|--|--|--|--|
+Esteban | local      | 24.11 | 144.18 | 88.79 | 25.14 
+Esteban | amd20      | 13.42 | 73.26  | N/A | 25.66 
+John    | local      | X | X | X | X 
+John    | intel18    | X | X | X | X 
+Jorge   | local      | X | X | X | X 
+Jorge   | amd20-v100 | X | X | X | X 
+Farhad  | local      | 14.59 | 67.41  | 49.00 | 21.25 
+Farhad  | intel16    | 11.96 | 86.47  | 68.15 | 16.77 
+*N/A: Not Available
+
+As an example, the roofline model for Esteban local system is shown below. As this figure shows, the horizontal cap of the model shows the maximum peak performance (comput-bound) where the inclined lines shows the limitations comes from the memory bandwidth capacity at different memory/cash level (bandwidth-bound).
+
+![img3](/ERT_data/RF_esteban_local.png)
