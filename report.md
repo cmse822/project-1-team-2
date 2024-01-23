@@ -57,18 +57,18 @@ As mentioned earlier, each groupmember uses a local and HPCC machines for runnin
 
 `NOTE`: the problem statement asks to use the assumption of "1 flop per cycle" for calculation of the "Theoretical Peak Performance" (TPP), this is while it's not the case for almost every CPU architecture nowadays. According to online search, the assumption of 8 flops/cycle for x86 and 16 flops/cycle for x64 has also be used.
 
-User | Architecture | Clock speed (GHz) | Cache Size | Cache Layout | Cores | TPP (GFlops/s) - Assmp: 1 flop/cycle | TPP (Gflops/s) | Avg Runtime (ms) $N=100$| Mflops/s $N=100$ |
+User | Architecture | Clock speed (GHz) | Cache Size | Cache Layout | Cores | TPP (GFlops/s) - Assmp: 1 flop/cycle | Avg Runtime (ms) $N=100$| Mflops/s $N=100$ |
 --|--|--|--|--|--|--|--|--|--|
-Esteban | local | 2.3 | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 23.0 | 184 | 7.7.747 | 127.791  
-Esteban | amd20 | 2.6 | 32 KB, 32 KB, 512 KB, 16.38 MB | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 166.4 | 1331.2 | 16.469 | 60.113
-John    | local | 2.6 | 384KB, 1.5MB, 12MB |6 L1, 6 L2, 1 L3 | 6 | 15.6 | 124.8| 13.895 | 71.248 
-John    | intel18 | 2.4 | 32K, 32KB, 1MB, 28.160MB |20 L1d, 20 L1i, 20 L2, 1 L3 | 20 | 48.0 |384| 15.282 | 64.782          
-Jorge   | local (Apple Silicon M2) | 3.2 | 192KB, 12MB, 8MB | 8 L1, 8 L2, 1 L3| 8 | 25.6 | X | 10.108 | 97.942
-Jorge   | amd20-v100 | 2.4 | 32 KB, 32 KB, 1024 KB, 36.60MB | 64 L1d, 64 L1i, 64 L2, 1 L3 | 48 | 115.2 | 920 | 16.159 | 61.266
-Farhad  | local | 2.6 | 64KB, 256KB, 12MB | 6 L1, 6 L2, 1 L3 | 6 | 15.6 | 249.6 | 11.389 | 86.826
-Farhad  | intel16 | 2.4 | 32KB, 256KB, 35MB | 14 L1, 14 L2, 1 L3 | 14 | 33.6 | 336.11| 14.476 | 68.389
+Esteban | local | 2.3 | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 23.0 | 7.7.747 | 127.791  
+Esteban | amd20 | 2.6 | 32 KB, 32 KB, 512 KB, 16.38 MB | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 166.4  | 16.469 | 60.113
+John    | local | 2.6 | 384KB, 1.5MB, 12MB |6 L1, 6 L2, 1 L3 | 6 | 15.6 | 13.895 | 71.248 
+John    | intel18 | 2.4 | 32K, 32KB, 1MB, 28.160MB |20 L1d, 20 L1i, 20 L2, 1 L3 | 20 | 48.0 | 15.282 | 64.782          
+Jorge   | local (Apple Silicon M2) | 3.2 | 192KB, 12MB, 8MB | 8 L1, 8 L2, 1 L3| 8 | 25.6 | 10.108 | 97.942
+Jorge   | amd20-v100 | 2.4 | 32 KB, 32 KB, 1024 KB, 36.60MB | 64 L1d, 64 L1i, 64 L2, 1 L3 | 48 | 115.2 | 16.159 | 61.266
+Farhad  | local | 2.6 | 64KB, 256KB, 12MB | 6 L1, 6 L2, 1 L3 | 6 | 15.6 | 11.389 | 86.826
+Farhad  | intel16 | 2.4 | 32KB, 256KB, 35MB | 14 L1, 14 L2, 1 L3 | 14 | 33.6 | 14.476 | 68.389
 
-Finally, the Mflop/s of the matrix multiplication of size `N=100` is plotted against the Theoretical Peak Performance (Gflops/s) of the available CPUs for local and HPCC machine types. As this figure shows for the local machines, the rate of floating point operations (Mflops/s) is generally increased with an increase in the CPU computational capacity (TPP). However, for the HPCC machines, this trend is unexpectedly reversed; where the rate of the floating point operations decreases with an increase in TPP, especially for the more recent `amd20` machine which has 64 cores. `DO WE HAVE ANY OTHER REASON FOR THIS? MAYBE THE CALCULATION IS BANDWIDTH-BOUNDED? OR MAYBE HIGHER NUMBER OF CORES ARE MISLEADING AND NOT USED IN CALCULATIONS, BECAUSE WE RAN IN DEVELOPMENT NODES AND CORES ARE SHARED?.`
+Finally, the Mflop/s of the matrix multiplication of size `N=100` is plotted against the Theoretical Peak Performance (Gflops/s) of the available CPUs for local and HPCC machine types. As this figure shows for the local machines, the rate of floating point operations (Mflops/s) is generally increased with an increase in the CPU computational capacity (TPP). However, for the HPCC machines, this trend is unexpectedly reversed; where the rate of the floating point operations decreases with an increase in TPP, especially for the more recent `amd20` machine which has 64 cores.
 
 ![img1](/analysis/Part1_Q4_Mflops_vs_TPP.png)
 
