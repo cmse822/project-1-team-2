@@ -1,0 +1,68 @@
+{
+   "empirical": {
+      "metadata": {},
+      "gflops": {
+         "data": [
+            [
+               "FP64 GFLOPs",
+               32.49
+            ]
+         ],
+         "metadata": {
+            "": [
+               "META_DATA",
+               "FLOPS          16",
+               "ERT_VERSION  1.1.0",
+               "HOSTNAME  ('host-252366.dhcp.egr.msu.edu', ['216.215.12.35.in-addr.arpa'], ['35.12.215.216'])",
+               "UNAME  uname_result(system='Darwin', node='host-252366.dhcp.egr.msu.edu', release='23.0.0', version='Darwin Kernel Version 23.0.0: Thu Aug 17 21:24:14 PDT 2023; root:xnu-10002.1.11~3/RELEASE_ARM64_T8103', machine='arm64')",
+               "TIMESTAMP_DATA  1706013196.6169221",
+               "CONFIG  {'ERT_RESULTS': ['Results.Jorge_Local.01'], 'ERT_DRIVER': ['driver1'], 'ERT_KERNEL': ['kernel1'], 'ERT_MPI': ['False'], 'ERT_MPI_CFLAGS': [], 'ERT_MPI_LDFLAGS': [], 'ERT_OPENMP': ['False'], 'ERT_OPENMP_CFLAGS': ['-openmp'], 'ERT_OPENMP_LDFLAGS': ['-openmp'], 'ERT_FLOPS': ['1,2,4,8,16,32'], 'ERT_ALIGN': ['64'], 'ERT_CC': ['g++'], 'ERT_CFLAGS': ['-O3', '-std=c++11'], 'ERT_LD': ['g++'], 'ERT_LDFLAGS': [], 'ERT_LDLIBS': [], 'ERT_PRECISION': ['FP64'], 'ERT_RUN': ['./ERT_CODE'], 'ERT_PROCS_THREADS': ['16'], 'ERT_MPI_PROCS': ['1,2,4,8,16'], 'ERT_OPENMP_THREADS': ['1,2,4,8,16'], 'ERT_NUM_EXPERIMENTS': ['3'], 'ERT_MEMORY_MAX': ['1073741824'], 'ERT_WORKING_SET_MIN': ['1'], 'ERT_TRIALS_MIN': ['1'], 'ERT_GNUPLOT': ['gnuplot'], 'ERT_GPU': [False], 'ERT_HIP': [False], 'ERT_OCL': [False], 'ERT_SYCL': [False], 'ERT_WSS_MULT': [1.1]}",
+               "TIMESTAMP_DATA  1706013238.123318",
+               "TIMESTAMP_DATA  1706013287.220972"
+            ],
+            "TIMESTAMP_DB": 1706014477.3291743
+         }
+      },
+      "gbytes": {
+         "data": [
+            [
+               "L1",
+               99.43
+            ],
+            [
+               "L2",
+               66.73
+            ],
+            [
+               "L3",
+               51.02
+            ],
+            [
+               "DRAM",
+               43.26
+            ]
+         ],
+         "metadata": {
+            "": [
+               "FLOPS          2",
+               "ERT_VERSION  1.1.0",
+               "HOSTNAME  ('host-252366.dhcp.egr.msu.edu', ['216.215.12.35.in-addr.arpa'], ['35.12.215.216'])",
+               "UNAME  uname_result(system='Darwin', node='host-252366.dhcp.egr.msu.edu', release='23.0.0', version='Darwin Kernel Version 23.0.0: Thu Aug 17 21:24:14 PDT 2023; root:xnu-10002.1.11~3/RELEASE_ARM64_T8103', machine='arm64')",
+               "TIMESTAMP_DATA  1706012915.163193",
+               "CONFIG  {'ERT_RESULTS': ['Results.Jorge_Local.01'], 'ERT_DRIVER': ['driver1'], 'ERT_KERNEL': ['kernel1'], 'ERT_MPI': ['False'], 'ERT_MPI_CFLAGS': [], 'ERT_MPI_LDFLAGS': [], 'ERT_OPENMP': ['False'], 'ERT_OPENMP_CFLAGS': ['-openmp'], 'ERT_OPENMP_LDFLAGS': ['-openmp'], 'ERT_FLOPS': ['1,2,4,8,16,32'], 'ERT_ALIGN': ['64'], 'ERT_CC': ['g++'], 'ERT_CFLAGS': ['-O3', '-std=c++11'], 'ERT_LD': ['g++'], 'ERT_LDFLAGS': [], 'ERT_LDLIBS': [], 'ERT_PRECISION': ['FP64'], 'ERT_RUN': ['./ERT_CODE'], 'ERT_PROCS_THREADS': ['16'], 'ERT_MPI_PROCS': ['1,2,4,8,16'], 'ERT_OPENMP_THREADS': ['1,2,4,8,16'], 'ERT_NUM_EXPERIMENTS': ['3'], 'ERT_MEMORY_MAX': ['1073741824'], 'ERT_WORKING_SET_MIN': ['1'], 'ERT_TRIALS_MIN': ['1'], 'ERT_GNUPLOT': ['gnuplot'], 'ERT_GPU': [False], 'ERT_HIP': [False], 'ERT_OCL': [False], 'ERT_SYCL': [False], 'ERT_WSS_MULT': [1.1]}",
+               "TIMESTAMP_DATA  1706012945.401705",
+               "TIMESTAMP_DATA  1706012971.096778"
+            ],
+            "TIMESTAMP_DB": 1706014477.3294084
+         }
+      }
+   },
+   "spec": {
+      "gflops": {
+         "data": []
+      },
+      "gbytes": {
+         "data": []
+      }
+   }
+}
