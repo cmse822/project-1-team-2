@@ -109,6 +109,8 @@ Farhad  | local      | 14.59 | 67.41  | 49.00 | 21.25
 Farhad  | intel16    | 11.96 | 86.47  | 68.15 | 16.77 
 *N/A: Not Available
 
-As an example, the roofline model for Esteban local system is shown below. As this figure shows, the horizontal cap of the model shows the maximum peak performance (comput-bound) where the inclined lines shows the limitations comes from the memory bandwidth capacity at different memory/cash level (bandwidth-bound).
+The resulting Roofline models for all computing systems of each groupmember can be found in the figure below. As each model in this figure shows, the horizontal cap of the model shows the maximum peak performance (comput-bound) where the inclined lines shows the limitations comes from the memory bandwidth capacity at different memory/cash level (bandwidth-bound).
 
-![img3](/ERT_data/RF_esteban_local.png)
+![img3](/analysis/Part2_Q3_Rooflines.png)
+
+
