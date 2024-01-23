@@ -113,4 +113,11 @@ The resulting Roofline models for all computing systems of each groupmember can 
 
 ![img3](/analysis/Part2_Q3_Rooflines.png)
 
+### Question 4:
+
+
+### Question 5:
+
+### Question 6:
+
 
