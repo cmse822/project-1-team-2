@@ -83,6 +83,10 @@ For instance in the local runs, the highest performance is for Esteban's systems
 
 ![img2](/analysis/Part1_Q5_Mflops-s_vs_Mflops.png)
 
+As requested in Question 5, the above-mentioned figure is re-generated as follows in log-log space with the horizontal lines representing the theoritical peak performance (TPP) of the hardware. As this figure shows, the TPP caps of the analysis were far beyond the measured performance. The main reason for this observation can attribute the number of cores within the CPU. In another word, the number of cores is a direct multiplier in calculation of the TPP; this is while most of those cores are not contribute in the performing the analysis for the code (the task is suppose to be single-core). Therefore, the full capacity of the system is not expected to be used during the matrix multiplication process. Such a gap seems even more significant in HPCC, where there are considerably more number of cores available for each CPU. 
+
+![img10](/analysis/Part1_Q5_With_TPP.png)
+
 ### Question 6:
 
 According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
