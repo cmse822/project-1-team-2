@@ -58,7 +58,7 @@ As mentioned earlier, each groupmember uses a local and HPCC machines for runnin
 `NOTE`: the problem statement asks to use the assumption of "1 flop per cycle" for calculation of the "Theoretical Peak Performance" (TPP), this is while it's not the case for almost every CPU architecture nowadays. According to online search, the assumption of 8 flops/cycle for x86 and 16 flops/cycle for x64 has also be used.
 
 User | Architecture | Clock speed (GHz) | Cache Size | Cache Layout | Cores | TPP (GFlops/s) - Assmp: 1 flop/cycle | Avg Runtime (ms) $N=100$| Mflops/s $N=100$ |
---|--|--|--|--|--|--|--|--|--|
+--|--|--|--|--|--|--|--|--|
 Esteban | local | 2.3 | 480 KB, 320 KB, 12.5 MB, 24 MB | 10 L1d, 10 L1i, 10 L2, 1 L3   | 10  | 23.0 | 7.7.747 | 127.791  
 Esteban | amd20 | 2.6 | 32 KB, 32 KB, 512 KB, 16.38 MB | 64 L1d, 64 L1i, 64 L2, 1 L3   | 64  | 166.4  | 16.469 | 60.113
 John    | local | 2.6 | 384KB, 1.5MB, 12MB |6 L1, 6 L2, 1 L3 | 6 | 15.6 | 13.895 | 71.248 
