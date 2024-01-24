@@ -89,7 +89,7 @@ As requested in Question 5, the above-mentioned figure is re-generated as follow
 
 ### Question 6:
 
-According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`, the most likely reason for this behavior is that the memory usage for this problem increases exponentially and the difference between L1 cache sizes between systems not being significantly high, then we can assume that for most of them a matrix with `N=160` is the one that fit the best on the cache.
+According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`, the most likely reason for this behavior is that the memory usage for this problem increases exponentially and the difference between L1 cache sizes between systems not being significantly high, then we can assume that for most of them a matrix with `N=160` is the one that fit the best on the L1 cache.
 
 ## Part 2: The Roofline Model
 
