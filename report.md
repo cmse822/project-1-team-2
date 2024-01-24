@@ -115,8 +115,17 @@ The resulting Roofline models for all computing systems of each groupmember can 
 
 ### Question 4:
 
+| Kernel | Operational Intensity | Esteban Local | amd20 | John Local | Jorge Local | amd20-v100 | Farhad Local | intel16|
+| Sparse Matrix-Vector Multiplication |
+| Lattice-Boltzmann Magnetohydrodynamics |
+| Stencil |
+| 3-D FFT | 
+
+
 
 ### Question 5:
+
+
 
 ### Question 6:
 
