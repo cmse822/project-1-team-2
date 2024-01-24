@@ -136,17 +136,20 @@ Farhad  | intel16    | 0.138 | 0.175 | 0.713 |
 
 ### Question 4:
 
-| Kernel | Operational Intensity | Esteban Local | amd20 | John Local | Jorge Local | amd20-v100 | Farhad Local | intel16|
-| Sparse Matrix-Vector Multiplication |
-| Lattice-Boltzmann Magnetohydrodynamics |
-| Stencil |
-| 3-D FFT | 
-
-
+| Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18| Jorge Local | amd20-v100 | Farhad Local | intel16|
+|--|--|--|--|--|--|--|--|--|--|
+| Sparse Matrix-Vector Multiplication | 0.25 |  Compute | X | Compute | Compute | Memory | Memory | Compute | Compute |
+| Lattice-Boltzmann Magnetohydrodynamics | 1.07 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute |
+| Stencil | 0.5 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute
+| 3-D FFT | 1.64 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute
 
 ### Question 5:
-
-
+| Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18 | Jorge Local | amd20-v100 | Farhad Local | intel16|
+|--|--|--|--|--|--|--|--|--|--|
+Y[j] += Y[j] + A[j][i] * B[i] | 0.09375 | Memory | X | Memory | Memory  | Memory | Memory | Memory | Memory | 
+s += A[i] * A[i]              | 0.25    | Compute | X | Compute | Compute | Memory | Memory  | Compute | Compute | 
+s += A[i] * B[i]              | 0.125   | Memory | X | Memory | Memory | Memory | Memory | Memory  | Memory |
+Y[i] = A[i] + C*B[i]          | 0.0833  | Memory | X | Memory | Memory | Memory | Memory | Memory | Memory | 
 
 ### Question 6:
 
