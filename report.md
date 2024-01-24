@@ -141,4 +141,4 @@ Farhad  | intel16    | 0.138 | 0.175 | 0.713 |
 
 ### Question 6:
 
-Looking at the values of the theoretical peak performance that we got from the matrix matrix multiplication and the one that we got from ERT show that assuming that the cpu only does one instruction per cycle is a good approximation most of the time, but ERT shows that the actual peaks are higher and demonstrate that modern CPUs work on more than one instruction per cycle.
+Looking at the values of the theoretical peak performance that we got from the matrix matrix multiplication and the ones that we got from ERT show that assuming that the CPU only does one instruction per cycle is a good approximation most of the time, but the actual peaks are higher and demonstrate that modern CPUs work on more than one instruction per cycle, for example, Jorge's local environment estimate a peak performance of 25.6 GFlops/s but the peak given by ERT is 32.5, which is a significantly higher than the estimate using just one instruction per cycle.
