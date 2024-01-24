@@ -89,7 +89,7 @@ As requested in Question 5, the above-mentioned figure is re-generated as follow
 
 ### Question 6:
 
-According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
+According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`, the most likely reason for this behavior is that the memory usage for this problem increases exponentially and the difference between L1 cache sizes between systems not being significantly high, then we can assume that for most of them a matrix with `N=160` is the one that fit the best on the cache.
 
 ## Part 2: The Roofline Model
 
@@ -141,4 +141,4 @@ Farhad  | intel16    | 0.138 | 0.175 | 0.713 |
 
 ### Question 6:
 
-
+Looking at the values of the theoretical peak performance that we got from the matrix matrix multiplication and the one that we got from ERT show that assuming that the cpu only does one instruction per cycle is a good approximation most of the time, but ERT shows that the actual peaks are higher and demonstrate that modern CPUs work on more than one instruction per cycle.
