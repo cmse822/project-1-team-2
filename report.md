@@ -83,28 +83,34 @@ For instance in the local runs, the highest performance is for Esteban's systems
 
 ![img2](/analysis/Part1_Q5_Mflops-s_vs_Mflops.png)
 
+As requested in Question 5, the above-mentioned figure is re-generated as follows in log-log space with the horizontal lines representing the theoritical peak performance (TPP) of the hardware. As this figure shows, the TPP caps of the analysis were far beyond the measured performance. The main reason for this observation can attribute the number of cores within the CPU. In another word, the number of cores is a direct multiplier in calculation of the TPP; this is while most of those cores are not contribute in the performing the analysis for the code (the task is suppose to be single-core). Therefore, the full capacity of the system is not expected to be used during the matrix multiplication process. Such a gap seems even more significant in HPCC, where there are considerably more number of cores available for each CPU. 
+
+![img10](/analysis/Part1_Q5_With_TPP.png)
+
 ### Question 6:
 
-According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`. `DO WE HAVE ANY OTHER REASON FOR THAT? CONSIDERING DIFFERENT ARCHITECTURES, IS THIS RESULT MAKE SENSE AT ALL?`
+According to the figure, it was an interesting observation that the peak performance point of all graphs happens at `Mflops=3.91`, which corresponds to the matrix size of about `N=160`, the most likely reason for this behavior is that the memory usage for this problem increases exponentially and the difference between L1 cache sizes between systems not being significantly high, then we can assume that for most of them a matrix with `N=160` is the one that fit the best on the L1 cache.
 
 ## Part 2: The Roofline Model
 
 The CS Roofline Toolkit 1.1.0 has been cloned and run by each groupmember on the same computing systems used for Part 1. In what follows, the project questions are addressed:
 
-### Question 1-3:
+### Question 1& 2:
 
 After cloning the Roofline Toolkit from GitHub, each groupmember modify the `config` file corresponds to the system used for running. The main modifications were disabling the OpenMM and MPI parts, changing the compiler to the gcc system compiler, removing the compiler options, and specify the output folders. 
 
-Based on the results, the peak performance and bandwidths for different cash levels can be summarized in the following table:
+### Question 3:
+
+Based on the ERT Toolkit model results, the peak performance and bandwidths for different cash levels can be summarized in the following table:
 
 User | Architecture | Peak Performance (Gflops/s) | L1 Cash (GB/s) | L2 Cash (GB/s) | DRAM (GB/s)
 --|--|--|--|--|--|
 Esteban | local      | 24.11 | 144.18 | 88.79 | 25.14 
 Esteban | amd20      | 13.42 | 73.26  | N/A | 25.66 
-John    | local      | X | X | X | X 
-John    | intel18    | X | X | X | X 
-Jorge   | local      | X | X | X | X 
-Jorge   | amd20-v100 | X | X | X | X 
+John    | local      | 16.37 | 130.13 | 104.41 | 17.32 
+John    | intel18    | 14.62 | 111.83 | 73.18 | 19.31 
+Jorge   | local      | 32.5 | 99.4 | 66.7 | 43.3 
+Jorge   | amd20-v100 | 13.4 | 46.0 | N/A | 20.3 
 Farhad  | local      | 14.59 | 67.41  | 49.00 | 21.25 
 Farhad  | intel16    | 11.96 | 86.47  | 68.15 | 16.77 
 *N/A: Not Available
@@ -112,6 +118,21 @@ Farhad  | intel16    | 11.96 | 86.47  | 68.15 | 16.77
 The resulting Roofline models for all computing systems of each groupmember can be found in the figure below. As each model in this figure shows, the horizontal cap of the model shows the maximum peak performance (comput-bound) where the inclined lines shows the limitations comes from the memory bandwidth capacity at different memory/cash level (bandwidth-bound).
 
 ![img3](/analysis/Part2_Q3_Rooflines.png)
+
+Based on the presented results in the figure above, the "ridge point" for each system architecture and memory type can be found in the following table. It is noted that the higher the value of the ridge point indicates more kernel intensity required to achieve the compute-bound (CPU capacity).
+
+User | Architecture | Ridge Point (Flops/Byte) | | |
+-----|--------------|-------|-------|----|
+ | |                 | L1 Cash | L2 Cash | DRAM| 
+Esteban | local      | 0.167 | 0.271 | 0.959 |
+Esteban | amd20      | X | X  | X |
+John    | local      | 0.126 | 0.156 | 0.945 |
+John    | intel18    | 0.130 | 0.199 | 0.757 |
+Jorge   | local      | 0.327 | 0.486 | 0.751 |
+Jorge   | amd20-v100 | 0.292 | N/A   | 0.625 |
+Farhad  | local      | 0.216 | 0.297 | 0.686 |
+Farhad  | intel16    | 0.138 | 0.175 | 0.713 |
+
 
 ### Question 4:
 
@@ -129,4 +150,4 @@ The resulting Roofline models for all computing systems of each groupmember can 
 
 ### Question 6:
 
-
+Looking at the values of the theoretical peak performance that we got from the matrix matrix multiplication and the ones that we got from ERT show that assuming that the CPU only does one instruction per cycle is a good approximation most of the time, but the actual peaks are higher and demonstrate that modern CPUs work on more than one instruction per cycle, for example, Jorge's local environment estimate a peak performance of 25.6 GFlops/s but the peak given by ERT is 32.5, which is a significantly higher than the estimate using just one instruction per cycle.
