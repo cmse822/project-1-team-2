@@ -135,21 +135,29 @@ Farhad  | intel16    | 0.138 | 0.175 | 0.713 |
 
 
 ### Question 4:
+The following table illustrates the theoretical performance of four of the "seven dwarfs" kernels in the architectures tested in this project. 
 
 | Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18| Jorge Local | amd20-v100 | Farhad Local | intel16|
 |--|--|--|--|--|--|--|--|--|--|
 | Sparse Matrix-Vector Multiplication | 0.25 |  Compute | X | Compute | Compute | Memory | Memory | Compute | Compute |
 | Lattice-Boltzmann Magnetohydrodynamics | 1.07 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute |
-| Stencil | 0.5 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute
-| 3-D FFT | 1.64 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute
+| Stencil | 0.5 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute | 
+| 3-D FFT | 1.64 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute | 
+
+In the vast majority of the benchmarked architectures, and if we consider the peak theoretical cealing of each of them that corresponds to the L1 cache, the kernels would be compute bound. 
+
+The optimization strategies that should be implemented in each of these cases should, in principle, allow them to overcome the celings that would initially prevent them from reaching the maximum theoretical roof. For the cases where the kernels are compute bound, improving the instruction level parallelism and balancing floating-point operations would be advisable. This second strategy requires having a similar number of floating-point additions and subtractions, which is directly related to the algorithm implemented and might not always be possible to modify. On the other hand, relying on ILP may vary on the architecture, although loop unrolling might be a way to achieve it. 
 
 ### Question 5:
+The same analaysis of the performance of the four kernels studied in the warm-up is shown in this table
 | Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18 | Jorge Local | amd20-v100 | Farhad Local | intel16|
 |--|--|--|--|--|--|--|--|--|--|
 Y[j] += Y[j] + A[j][i] * B[i] | 0.09375 | Memory | X | Memory | Memory  | Memory | Memory | Memory | Memory | 
 s += A[i] * A[i]              | 0.25    | Compute | X | Compute | Compute | Memory | Memory  | Compute | Compute | 
 s += A[i] * B[i]              | 0.125   | Memory | X | Memory | Memory | Memory | Memory | Memory  | Memory |
 Y[i] = A[i] + C*B[i]          | 0.0833  | Memory | X | Memory | Memory | Memory | Memory | Memory | Memory | 
+
+In contrast with the kernels previously discussed in question 4, most of the kernels of the warm-up are bound by memory. In order to guarantee maximum efficiency to overcome the ceiling on memory bound problem, restructuring loop to guarantee stride acces and relying on software prefetching are viable solutions
 
 ### Question 6:
 
