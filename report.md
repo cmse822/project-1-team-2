@@ -119,7 +119,7 @@ The resulting Roofline models for all computing systems of each groupmember can 
 
 ![img3](/analysis/Part2_Q3_Rooflines.png)
 
-Based on the presented results in the figure above, the "ridge point" for each system architecture and memory type can be found in the following table. It is noted that the higher the value of the ridge point indicates more kernel intensity required to achieve the compute-bound (CPU capacity).
+Based on the presented results in the figure above, the x-coordinate of the "ridge point" for each system architecture and memory type can be found in the following table. According to Williams et al.(2008), the x-coordinate of the ridge point represents the lowest operational intensity needed to reach peak performance. When this ridge point is positioned at the extreme right, only those kernels with significantly high operational intensity can attain the computer's top performance. Conversely, suppose the ridge point is towards the left. In that case, it implies that nearly all kernels have the potential to achieve maximum performance, which is the scenario in almost all the architectures we used.
 
 User | Architecture | Ridge Point (Flops/Byte) | | |
 -----|--------------|-------|-------|----|
@@ -162,3 +162,8 @@ In contrast with the kernels previously discussed in question 4, most of the ker
 ### Question 6:
 
 Looking at the values of the theoretical peak performance that we got from the matrix matrix multiplication and the ones that we got from ERT show that assuming that the CPU only does one instruction per cycle is a good approximation most of the time, but the actual peaks are higher and demonstrate that modern CPUs work on more than one instruction per cycle, for example, Jorge's local environment estimate a peak performance of 25.6 GFlops/s but the peak given by ERT is 32.5, which is a significantly higher than the estimate using just one instruction per cycle.
+
+
+### Reference
+Williams, S. W., Waterman, A., & Patterson, D. A. (2008). Roofline: An Insightful Visual Performance Model  
+ &nbsp; &nbsp; &nbsp; &nbsp; for Floating-Point Programs and Multicore Architectures Technical Report No. UCB/EECS-2008-134.
