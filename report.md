@@ -125,7 +125,7 @@ User | Architecture | Ridge Point (Flops/Byte) | | |
 -----|--------------|-------|-------|----|
  | |                 | L1 Cash | L2 Cash | DRAM| 
 Esteban | local      | 0.167 | 0.271 | 0.959 |
-Esteban | amd20      | X | X  | X |
+Esteban | amd20      | 0.183 | N/A   | 0.523 |
 John    | local      | 0.126 | 0.156 | 0.945 |
 John    | intel18    | 0.130 | 0.199 | 0.757 |
 Jorge   | local      | 0.327 | 0.486 | 0.751 |
