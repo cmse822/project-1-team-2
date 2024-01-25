@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --time=08:00:00
+#SBATCH --time=10:00:00
 #SBATCH --mem=8gb
 
 # output information about how this job is running using bash commands
