@@ -139,10 +139,10 @@ The following table illustrates the theoretical performance of four of the "seve
 
 | Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18| Jorge Local | amd20-v100 | Farhad Local | intel16|
 |--|--|--|--|--|--|--|--|--|--|
-| Sparse Matrix-Vector Multiplication | 0.25 |  Compute | X | Compute | Compute | Memory | Memory | Compute | Compute |
-| Lattice-Boltzmann Magnetohydrodynamics | 1.07 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute |
-| Stencil | 0.5 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute | 
-| 3-D FFT | 1.64 | Compute | X | Compute | Compute | Compute | Compute | Compute | Compute | 
+| Sparse Matrix-Vector Multiplication | 0.25 |  Compute | Compute | Compute | Compute | Memory | Memory | Compute | Compute |
+| Lattice-Boltzmann Magnetohydrodynamics | 1.07 | Compute | Compute | Compute | Compute | Compute | Compute | Compute | Compute |
+| Stencil | 0.5 | Compute | Compute | Compute | Compute | Compute | Compute | Compute | Compute | 
+| 3-D FFT | 1.64 | Compute | Compute | Compute | Compute | Compute | Compute | Compute | Compute | 
 
 In the vast majority of the benchmarked architectures, and if we consider the peak theoretical cealing of each of them that corresponds to the L1 cache, the kernels would be compute bound. 
 
