@@ -152,10 +152,10 @@ The optimization strategies that should be implemented in each of these cases sh
 The same analaysis of the performance of the four kernels studied in the warm-up is shown in this table
 | Kernel | Operational Intensity | Esteban Local | amd20 | John Local | intel18 | Jorge Local | amd20-v100 | Farhad Local | intel16|
 |--|--|--|--|--|--|--|--|--|--|
-Y[j] += Y[j] + A[j][i] * B[i] | 0.09375 | Memory | X | Memory | Memory  | Memory | Memory | Memory | Memory | 
-s += A[i] * A[i]              | 0.25    | Compute | X | Compute | Compute | Memory | Memory  | Compute | Compute | 
-s += A[i] * B[i]              | 0.125   | Memory | X | Memory | Memory | Memory | Memory | Memory  | Memory |
-Y[i] = A[i] + C*B[i]          | 0.0833  | Memory | X | Memory | Memory | Memory | Memory | Memory | Memory | 
+Y[j] += Y[j] + A[j][i] * B[i] | 0.09375 | Memory | Memory | Memory | Memory  | Memory | Memory | Memory | Memory | 
+s += A[i] * A[i]              | 0.25    | Compute | Compute | Compute | Compute | Memory | Memory  | Compute | Compute | 
+s += A[i] * B[i]              | 0.125   | Memory | Memory | Memory | Memory | Memory | Memory | Memory  | Memory |
+Y[i] = A[i] + C*B[i]          | 0.0833  | Memory | Memory | Memory | Memory | Memory | Memory | Memory | Memory | 
 
 In contrast with the kernels previously discussed in question 4, most of the kernels of the warm-up are bound by memory. In order to guarantee maximum efficiency to overcome the ceiling on memory bound problem, restructuring loop to guarantee stride acces and relying on software prefetching are viable solutions
 
