@@ -8,7 +8,7 @@
 echo "This job is running on $HOSTNAME on `date`"
 
 # run the "hello" program in this directory
-g++ -std=c++11 -o  matrix_multiplication matrix_multiplication.cpp
+g++ -O3 -std=c++11 -o matrix_multiplication matrix_multiplication.cpp
 ./matrix_multiplication
 mv results.csv data/results.csv
 rm matrix_multiplication
