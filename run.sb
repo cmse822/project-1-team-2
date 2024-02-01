@@ -1,0 +1,15 @@
+#!/bin/bash --login
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=10:00:00
+#SBATCH --mem=8gb
+
+# output information about how this job is running using bash commands
+echo "This job is running on $HOSTNAME on `date`"
+
+# run the "hello" program in this directory
+g++ -O3 -std=c++11 -o matrix_multiplication matrix_multiplication.cpp
+./matrix_multiplication
+mv results.csv data/results.csv
+rm matrix_multiplication
+
